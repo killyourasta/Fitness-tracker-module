@@ -12,12 +12,11 @@ class InfoMessage:
 
     def get_message(self) -> str:
         """Выводит результат тренировки"""
-        message = (f'Тип тренировки: {self.training_type}; '
-                   f'Длительность: {self.duration:.3f} ч.; '
-                   f'Дистанция: {self.distance:.3f} км; '
-                   f'Ср. скорость: {self.speed:.3f} км/ч; '
-                   f'Потрачено ккал: {self.calories:.3f}.')
-        return message
+        return (f'Тип тренировки: {self.training_type}; '
+                f'Длительность: {self.duration:.3f} ч.; '
+                f'Дистанция: {self.distance:.3f} км; '
+                f'Ср. скорость: {self.speed:.3f} км/ч; '
+                f'Потрачено ккал: {self.calories:.3f}.')
 
 
 @dataclass
@@ -40,7 +39,7 @@ class Training:
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
-        pass
+        raise NotImplementedError('Это проблема')
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
@@ -127,5 +126,8 @@ if __name__ == '__main__':
         ('WLK', [9000, 1, 75, 180]),
     ]
     for workout_type, data in packages:
-        training = read_package(workout_type, data)
-        main(training)
+        try:
+            training = read_package(workout_type, data)
+            main(training)
+        except ValueError:
+            raise ValueError('Неверный тип данных')
