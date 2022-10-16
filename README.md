@@ -6,16 +6,21 @@
 Разворачивание проекта:
 
 1.Клонировать репозиторий и перейти в его папку в командной строке:
-git clone 
+
+```git clone https://github.com/killyourasta/Fitness-tracker-module``` 
 
 2.Cоздать и активировать виртуальное окружение:
-python3 -m venv venv 
+
+```python3 -m venv venv```
 
 Для *nix-систем и MacOS:
-source venv/bin/activate 
+
+```source venv/bin/activate```
 
 Для windows-систем:
-source venv/Scripts/activate 
+
+```source venv/Scripts/activate```
 
 3.Установить зависимости из файла requirements.txt:
-pip install -r requirements.txt
+
+```pip install -r requirements.txt```
